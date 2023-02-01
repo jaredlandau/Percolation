@@ -8,7 +8,7 @@ Percolation theory fundamentally revolves around a simple way to model phase tra
 One notable observation is that each model of percolation will display a 'critical value', where a distinct phase transition can be observed. For a traditional two-dimensional square lattice, the critical value is known to be at p=0.5.
 
 * The probability of an infinite cluster existing when the p-value is less than or equal to the critical value is <b>always</b> 0 (impossible)
-* Likewise, the probability of one existing when the p-value is greater than the critical value is <b>always</b> 1 (certain).
+* Likewise, the probability of one existing when the p-value is greater than the critical value is <b>always</b> 1 (certain)
 
 Within the context of two-dimensional grid lattices, it is also known that there will be exactly one infinite cluster, and no more.
 
