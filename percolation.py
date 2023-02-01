@@ -69,7 +69,7 @@ def print_percolation_grid(size_x, size_y, disjoint_set):
         val = percolation_set.find(y * size_x + x)
         if val == y * size_x + x:
             if list(grid[y, x]) != [0, 0, 0]:
-                return grid[y,x]
+                return grid[y, x]
             else:
                 colour = generate_rgb()
                 pic_grid[y, x] = colour
@@ -95,7 +95,7 @@ def generate_rgb():
     return r, g, b
 
 
-def generate_network_image(x,y,p,i):
+def generate_network_image(x, y, p, i):
     Path("networks/n" + str(x) + "/").mkdir(parents=True, exist_ok=True)
     filename = str("networks/n" + str(x) + "/perc" + "_n" + str(x) + "_p" + str(f'{p:.4f}') + "_i" + str(i) + ".png")
     cv2.imwrite(filename, print_percolation_grid(x, y, generate_percolation(x, y, p)))
@@ -103,33 +103,31 @@ def generate_network_image(x,y,p,i):
 
 
 def generate_multiple_networks(numOfNetworks):
-    i = 0
-    n = int(input("n value: "))
-    p = round(float(input("median p value: ")),4)
-    step = round(float(input("step value: ")),4)
+    n_input = int(input("n value: "))
+    p_input = round(float(input("median p value: ")), 4)
+    step_input = round(float(input("step value: ")), 4)
 
-    p -= (step * (numOfNetworks - 1) * 0.5)
+    offset = step_input * (numOfNetworks - 1) * 0.5
+    p_array = np.linspace(p_input-offset,p_input+offset,numOfNetworks)
 
-    while(i < numOfNetworks):
-        print("Generating graph for p = " + str(p))
-        generate_network_image(n,n,p,i)
-        i += 1
-        p = np.round(p + step,4)
+    for i, p in enumerate(p_array):
+        print("Generating graph for p = " + str(round(p,4)))
+        generate_network_image(n_input, n_input, p, i)
 
     print("Done!")
 
 
 if __name__ == '__main__':
     userInput = input("Generate a batch of graphs? (y/n)\n").lower()
-    if(userInput == "y"):
+    if userInput == "y":
         generateBatch = True
     else:
         generateBatch = False
-    
+
     running = True
     i = 0
-    while(running):
-        if(generateBatch):
+    while running:
+        if generateBatch:
             numOfNetworks = int(input("How many networks do you want to generate?\n"))
             generate_multiple_networks(numOfNetworks)
             running = False
@@ -138,10 +136,10 @@ if __name__ == '__main__':
             n = int(input("n value: "))
             p = float(input("p value: "))
 
-            generate_network_image(n,n,p,i)
+            generate_network_image(n, n, p, i)
 
             userChoice = input("Generate a new graph? (y/n)\n").lower()
-            if(userChoice == "n"):
+            if userChoice == "n":
                 print("Exiting...")
                 running = False
                 break
