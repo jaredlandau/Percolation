@@ -15,6 +15,7 @@ Within the context of two-dimensional grid lattices, it is also known that there
 <div align="center">
 <img src="https://raw.githubusercontent.com/jaredlandau/Percolation/main/percolation.gif" alt="drawing" width="500"/>
 <p><i>Percolation graph of n=500, with the p-value ranging from 0.35 to 0.65. A phase transition is clearly visible at p=0.5 as predicted.</i></p>
+</div>
 
 Percolation theory is still relatively poorly understood in the context of mathematics, particularly when exploring grids of three or more dimensions. If a formula for calculating the critical value does exist (which is an ongoing topic of debate), it has not yet been found. Currently, critical values in more complex scenarios can only be derived by conducting numerical simulations.
 
